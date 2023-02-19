@@ -2,7 +2,22 @@
     background-color: #281f43;
     color: bisque;
 
-    height: 21vw;
+    height: 21vh;
 
     margin-top: 15px;
+    display: flex;
+}
+
+.headerLogo{
+    display: flex;
+    width: 23vw;
+}
+.headerMenu{
+width: 55vw;
+}
+.headerProfile{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 23vw;
 }

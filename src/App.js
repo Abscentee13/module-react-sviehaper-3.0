@@ -1,37 +1,30 @@
 import React, {useState} from 'react';
 
-import { createTheme, ThemeProvider } from "@material-ui/core/styles";
-import { CssBaseline, Container, Button } from '@material-ui/core';
+import { ThemeProvider } from "@material-ui/core/styles";
+import { CssBaseline} from '@material-ui/core';
+import {Header} from "./Components/Header/Header";
+import { ThemeContext } from './configs/theme-context';
+import { lightTheme, darkTheme } from './configs/theme';
 
 
 
+const App = () => {
 
+    const [theme, setTheme] = useState(lightTheme ? lightTheme : darkTheme);
 
-function App() {
-    const [darkMode, setDarkMode] = useState(false);
-
-    const handleThemeChange = () => {
-        setDarkMode(!darkMode);
+    const toggleTheme = () => {
+        setTheme(theme === lightTheme ? darkTheme : lightTheme);
     };
 
-    const theme = createTheme({
-        palette: {
-            type: darkMode ? 'dark' : 'light',
-        },
-    });
 
     return (
+        <ThemeContext.Provider value={{ theme, setTheme: toggleTheme }}>
         <ThemeProvider theme={theme}>
             <CssBaseline />
-            <Container>
-                <Button onClick={handleThemeChange}>
-                    {darkMode ? 'Switch to light mode' : 'Switch to dark mode'}
-                </Button>
-                <h1>{darkMode ? 'Dark Mode' : 'Light Mode'}</h1>
-                <p>Here is some text to demonstrate the theme change.</p>
-            </Container>
+            <Header />
         </ThemeProvider>
+        </ThemeContext.Provider>
     );
 }
 
-export default App;
+export {App};

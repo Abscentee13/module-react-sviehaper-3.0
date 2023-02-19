@@ -1,26 +1,13 @@
-import {useEffect, useState} from "react";
-import {createTheme, styled} from '@mui/material/styles';
-import FormGroup from '@mui/material/FormGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Switch, { SwitchProps } from '@mui/material/Switch';
+import React, {useContext, useState} from 'react';
+import { ThemeContext } from '../../configs/theme-context';
+import Button from '@material-ui/core/Button';
+import {FormControlLabel, FormGroup, styled, Switch} from "@mui/material";
+
+const ThemeSelection = () => {
+    const { theme, setTheme } = useContext(ThemeContext);
+    const [checked, setChecked] = useState(false);
 
 
-//import css from './ThemeSelection.module.css';
-
-
-
-
-const ThemeSelection = ({theme}) => {
-
-console.log(theme);
-
-    const [darkMode, setDarkMode] = useState(false);
-    const handleDarkModeChange = () => {
-        setDarkMode(!darkMode);
-    };
-
-
-  ////////////////////////////
 
     const MaterialUISwitch = styled(Switch)(({ theme }) => ({
         width: 62,
@@ -69,20 +56,22 @@ console.log(theme);
         },
     }));
 
-  //////////////////////////
-
-
-
+    const handleChange = () => {
+        setChecked(!checked);
+        setTheme();
+    };
 
 
     return (
-        <FormGroup>
-            <FormControlLabel
-                control={<MaterialUISwitch sx={{ m: 1 }} defaultChecked />}
-                label =  {'світла'}
-                //onClick={handleDarkModeChange}
-            />
-        </FormGroup>
+        <>
+            <FormGroup>
+                <FormControlLabel
+                    control={<MaterialUISwitch sx={{ m: 1 }} defaultChecked  />}
+                    checked={checked}
+                    onChange={handleChange}
+                />
+            </FormGroup>
+        </>
     );
 }
 
