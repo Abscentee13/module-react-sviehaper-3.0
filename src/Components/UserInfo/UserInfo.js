@@ -1,10 +1,8 @@
-
-import React, {useContext} from 'react';
-import PropTypes from 'prop-types';
+import {useContext} from 'react';
 
 import css from './UserInfo.module.css';
 
-import {AvatarImage} from '../../Components';
+import {AvatarImage} from '../../components';
 import {Typography} from "@mui/material";
 import {ThemeContext} from "../../themes/theme-context";
 
@@ -16,7 +14,8 @@ const UserInfo = ({name, email, avatarUrl}) => {
                 <div className={css.userCard}>
                     <AvatarImage avatarUrl = {avatarUrl} />
                     <div className={css.userCardText}>
-                        <Typography variant="h5" component={theme.components.MuiTypography.defaultProps.variantMapping.subtitle1} color={theme.palette.primary.contrastText}>
+                        {/*variant="h6"*/}
+                        <Typography  component={theme.components.MuiTypography.defaultProps.variantMapping.subtitle1} color={theme.palette.primary.contrastText}>
                             {name}
                             <br/>
                             {email}

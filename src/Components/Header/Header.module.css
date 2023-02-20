@@ -2,7 +2,6 @@
     background-color: #281f43;
     color: #C0AAAA;
 
-    height: 21vh;
 
     margin-top: 15px;
     display: flex;
@@ -11,11 +10,20 @@
 
 .headerLogo{
     display: flex;
-    width: 23vw;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    width: 12vw;
 }
 
 .headerMenu{
-    width: 63vw;
+    width: 75vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
 }
 
 .headerProfile{

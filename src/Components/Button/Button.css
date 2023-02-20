@@ -1,7 +1,10 @@
 .btn {
     position: relative;
+    height: 20%;
+
+    margin: 10px 15px;
     padding: 10px 15px;
-    background-color: #7CC6fE;
+    background-color: #445555;
     border: none;
     color: #FFF;
     font-weight: 600;
@@ -9,6 +12,7 @@
     text-transform: uppercase;
     display: inline-block;
     text-decoration: none;
+
 }
 
 .btn:hover {

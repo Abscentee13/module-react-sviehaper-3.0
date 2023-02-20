@@ -1,13 +1,9 @@
 import {Typography} from "@mui/material";
 
 import css from './Header.module.css';
-//import {ThemeSelection} from "../../Components";
 
-import {Badge} from "../../Components";
-import {Button} from '../../Components';
-import {Icon} from '../../Components';
-import {UserInfo} from "../../Components";
-import {ThemeProvider} from "@material-ui/core/styles";
+import {GenreList} from '../../components';
+import {UserInfo} from "../../components";
 import {useContext} from "react";
 import {ThemeContext} from "../../themes/theme-context";
 
@@ -16,22 +12,18 @@ const Header = () =>{
 
 return(
         <div className={css.header}>
-
-            <Typography variant="h5" component="h2" color={theme.palette.primary.dark}>
+            <div className={css.headerLogo}>
+            <Typography variant="h5" component="h2" color={theme.palette.primary.contrastText}>
                 React module work
-                for OktenWeb
+                for Okten Web School
             </Typography>
-
+            </div>
             <div className={css.headerMenu}>
-                 <Button style={{ marginRight: '20px' }}>
-                    <Icon name="inbox" />
-                    <Badge circle alert value={1} />
-                </Button>
+                <GenreList />
             </div>
 
             <div className={css.headerProfile}>
                 <UserInfo avatarUrl ={'images/Sviehaper.jpg'} name ={'Sviehaper'} email ={'sss@sss.com'}/>
-                {/*<ThemeSelection />*/}
             </div>
     </div>
 );

@@ -3,7 +3,7 @@ import React, {useState} from 'react';
 import { ThemeProvider } from "@material-ui/core/styles";
 import {CssBaseline} from '@material-ui/core';
 
-import {Header, ThemeSelection} from "./Components";
+import {Header, ThemeSelection} from "./components";
 import {ThemeContext} from './themes/theme-context';
 import {lightTheme, darkTheme} from './themes/theme';
 

@@ -3,8 +3,13 @@ import { createTheme } from '@material-ui/core/styles';
 export const lightTheme = createTheme({
     palette: {
         type: 'light',
+
+        background: {
+            default: '#c6c0d4',
+        },
+
         primary: {
-            contrastText: '#FF6347',
+            contrastText: '#7CC6fE',
             dark: "rgb(59, 71, 59)",
             light: "rgb(119, 132, 119)",
             main: "#556655"
@@ -46,6 +51,11 @@ export const lightTheme = createTheme({
 export const darkTheme = createTheme({
     palette: {
         type: 'dark',
+
+        background: {
+            default: '#1e1633',
+        },
+
         primary: {
             contrastText: '#FFB6C1',
             dark: '#FFB6C1',
