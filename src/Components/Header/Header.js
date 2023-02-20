@@ -7,8 +7,8 @@ import {UserInfo} from "../../components";
 import {useContext} from "react";
 import {ThemeContext} from "../../themes/theme-context";
 
-const Header = () =>{
-    const { theme } = useContext(ThemeContext);
+const Header = ({genreList}) =>{
+    const {theme} = useContext(ThemeContext);
 
 return(
         <div className={css.header}>
@@ -19,7 +19,7 @@ return(
             </Typography>
             </div>
             <div className={css.headerMenu}>
-                <GenreList />
+                <GenreList genreList = {genreList}/>
             </div>
 
             <div className={css.headerProfile}>

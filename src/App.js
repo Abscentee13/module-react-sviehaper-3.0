@@ -3,6 +3,7 @@ import React, {useState} from 'react';
 import { ThemeProvider } from "@material-ui/core/styles";
 import {CssBaseline} from '@material-ui/core';
 
+import { getGenres } from './services';
 import {Header, ThemeSelection} from "./components";
 import {ThemeContext} from './themes/theme-context';
 import {lightTheme, darkTheme} from './themes/theme';
@@ -11,11 +12,17 @@ import {lightTheme, darkTheme} from './themes/theme';
 
 const App = () => {
 
+
+    const genreList = getGenres();
+    //////////////////////////////////////
     const [theme, setTheme] = useState(lightTheme ? lightTheme : darkTheme);
 
     const toggleTheme = () => {
         setTheme(theme === lightTheme ? darkTheme : lightTheme);
     };
+////////////////////////////////////////////
+
+
 
 
     return (
@@ -23,7 +30,7 @@ const App = () => {
         <ThemeProvider theme={theme}>
             <CssBaseline />
             <ThemeSelection />
-            <Header />
+            <Header genreList = {genreList} />
         </ThemeProvider>
         </ThemeContext.Provider>
     );
