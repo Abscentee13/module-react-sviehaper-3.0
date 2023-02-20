@@ -1,17 +1,18 @@
 import React, {useState} from 'react';
 
 import { ThemeProvider } from "@material-ui/core/styles";
-import { CssBaseline} from '@material-ui/core';
+import {CssBaseline} from '@material-ui/core';
+
 import {Header, ThemeSelection} from "./Components";
-import { ThemeContext } from './themes/theme-context';
-import { lightTheme, darkTheme } from './themes/theme';
+import {ThemeContext} from './themes/theme-context';
+import {lightTheme, darkTheme} from './themes/theme';
 
 
 
 const App = () => {
 
     const [theme, setTheme] = useState(lightTheme ? lightTheme : darkTheme);
-console.log(theme.palette.primary);
+
     const toggleTheme = () => {
         setTheme(theme === lightTheme ? darkTheme : lightTheme);
     };

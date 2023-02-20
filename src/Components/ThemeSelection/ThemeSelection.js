@@ -1,12 +1,10 @@
 import React, {useContext, useState} from 'react';
 import { ThemeContext } from '../../themes/theme-context';
-//import Button from '@material-ui/core/Button';
 import {FormControlLabel, FormGroup, styled, Switch} from "@mui/material";
 
 const ThemeSelection = () => {
     const { setTheme } = useContext(ThemeContext);
     const [checked, setChecked] = useState(false);
-
 
 
     const MaterialUISwitch = styled(Switch)(({ theme }) => ({
@@ -61,9 +59,7 @@ const ThemeSelection = () => {
         setTheme();
     };
 
-
     return (
-        <>
             <FormGroup>
                 <FormControlLabel
                     control={<MaterialUISwitch sx={{ m: 1 }}   />}
@@ -71,7 +67,6 @@ const ThemeSelection = () => {
                     onChange={handleChange}
                 />
             </FormGroup>
-        </>
     );
 }
 
