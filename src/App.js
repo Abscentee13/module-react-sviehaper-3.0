@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 
 import { ThemeProvider } from "@material-ui/core/styles";
 import { CssBaseline} from '@material-ui/core';
-import {Header} from "./Components/Header/Header";
+import {Header, ThemeSelection} from "./Components";
 import { ThemeContext } from './configs/theme-context';
 import { lightTheme, darkTheme } from './configs/theme';
 
@@ -21,6 +21,7 @@ const App = () => {
         <ThemeContext.Provider value={{ theme, setTheme: toggleTheme }}>
         <ThemeProvider theme={theme}>
             <CssBaseline />
+            <ThemeSelection />
             <Header />
         </ThemeProvider>
         </ThemeContext.Provider>
