@@ -1,11 +1,12 @@
 .header{
     background-color: #281f43;
-    color: bisque;
+    color: #C0AAAA;
 
     height: 21vh;
 
     margin-top: 15px;
     display: flex;
+    justify-content: space-around;
 }
 
 .headerLogo{
@@ -13,11 +14,12 @@
     width: 23vw;
 }
 .headerMenu{
-width: 55vw;
+width: 63vw;
 }
+
 .headerProfile{
     display: flex;
-    justify-content: center;
+    justify-content: right;
     align-items: center;
-    width: 23vw;
+    width: 12vw;
 }

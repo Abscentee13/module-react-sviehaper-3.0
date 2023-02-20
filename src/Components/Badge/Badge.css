@@ -44,7 +44,7 @@
 }
 
 .alert {
-    background-color: #EDE821;
+    background-color: #f7005e;
 }
 
 .success {
@@ -74,13 +74,13 @@
 }
 
 .outer.alert {
-    color: #EDE821;
-    border-color: #EDE821;
+    color: #e8eb48;
+    border-color: #e8eb48;
 }
 
 .outer.success {
-    color: #08C008;
-    border-color: #08C008;
+    color: #e8eb48;
+    border-color: #e8eb48;
 }
 
 .outer.info {

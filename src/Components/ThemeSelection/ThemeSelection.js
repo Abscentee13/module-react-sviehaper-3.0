@@ -1,10 +1,10 @@
 import React, {useContext, useState} from 'react';
-import { ThemeContext } from '../../configs/theme-context';
-import Button from '@material-ui/core/Button';
+import { ThemeContext } from '../../themes/theme-context';
+//import Button from '@material-ui/core/Button';
 import {FormControlLabel, FormGroup, styled, Switch} from "@mui/material";
 
 const ThemeSelection = () => {
-    const { theme, setTheme } = useContext(ThemeContext);
+    const { setTheme } = useContext(ThemeContext);
     const [checked, setChecked] = useState(false);
 
 

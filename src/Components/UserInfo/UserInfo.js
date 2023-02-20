@@ -1,23 +1,28 @@
 
-import React from 'react';
-import PropTypes from "prop-types";
+import React, {useContext} from 'react';
+import PropTypes from 'prop-types';
 
+import css from './UserInfo.module.css';
 
-const UserInfo = ({ name, email, avatarUrl, className, ...attrs }) => {
+import {AvatarImage} from '../../Components';
+
+const UserInfo = ({ name, email, avatarUrl, ...attrs }) => {
 
     return(
-        <div>
-
-
-        </div>
-
+                <div className={css.userCard}>
+                    <AvatarImage avatarUrl = {avatarUrl} />
+                    <div className={css.userCardText}>
+                        {name}
+                        <br/>
+                        {email}
+                    </div>
+                </div>
     );
 };
 
 
 UserInfo.propTypes = {
     name: PropTypes.string,
-    className: PropTypes.string,
     size: PropTypes.number,
     onClick: PropTypes.func,
     disabled: PropTypes.bool,
