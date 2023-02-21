@@ -14,10 +14,15 @@ export const requests = {
     // fetchTV: `/discover/movie?api_key=${API_KEY}&with_genres=10770`,
 };
 
+// https://api.themoviedb.org/3/movie/157336?api_key={api_key}
+//     https://api.themoviedb.org/3/movie/157336/videos?api_key={api_key}
+
 const baseURL = 'https://api.themoviedb.org'
 
 const urls = {
-    genres: '/3/genre/movie/list?' //api_key=' // + API_KEY + '&language=en-US',
+    genres: '/3/genre/movie/list?', //api_key=' // + API_KEY + '&language=en-US',
+    movies: '/3/movie/157336',
+    videos: '/3/movie/157336/videos'
     //comments: '/comments'
 }
 
