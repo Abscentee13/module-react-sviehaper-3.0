@@ -8,52 +8,64 @@ import axios from 'axios';
 import {baseURL, urls} from "../../../configs/urls";
 import {API_KEY} from "../../../configs/urls";
 
-import { FETCH_MOVIES_REQUEST, FETCH_MOVIES_SUCCESS, FETCH_MOVIES_FAILURE } from './moviesTypes';
+import { FETCH_MOVIES_REQUEST, FETCH_MOVIES_SUCCESS, FETCH_MOVIES_FAILURE, SET_FILTER } from './moviesTypes';
 
-const fetchMovies = () => {
-    return (dispatch) => {
-        dispatch(fetchMoviesRequest());
-        axios.get(baseURL + urls.movies, {
-            params: {
-                api_key: API_KEY,
-                language: 'en-US',
-            },
-        })
-            .then((response) => {
-                const genres = response.data.movies;
+//////////////
 
-                dispatch(fetchMoviesSuccess(genres));
-            })
-            .
 
-            catch((error) => {
-                dispatch(fetchMoviesFailure(error.message));
-            });
-    };
-};
+// const urls = {
+//     nowPlaying: '/movie/now_playing',
+//     popular: '/movie/popular',
+//     topRated: '/movie/top_rated',
+//     upcoming: '/movie/upcoming',
+// };
 
-export const fetchGenresRequest = () => {
+export const fetchMoviesRequest = () => {
     return {
         type: FETCH_MOVIES_REQUEST,
     };
 };
 
-export const fetchGenresSuccess = (movies) => {
+export const fetchMoviesSuccess = (movies) => {
     return {
         type: FETCH_MOVIES_SUCCESS,
-
         payload: movies,
     };
 };
 
-
-
-export const fetchGenresFailure = (error) => {
+export const fetchMoviesFailure = (error) => {
     return {
         type: FETCH_MOVIES_FAILURE,
-
         payload: error,
     };
 };
 
-export {fetchMovies};
+export const fetchMovies = (filter) => {
+    return (dispatch) => {
+        dispatch(fetchMoviesRequest());
+
+        axios
+            .get(/*baseURL + urls[filter]*/ 'https://api.themoviedb.org/3/discover/movie?api_key=c4afbfa3afc24cd4799e5c009de0e848', {
+                params: {
+                    api_key: API_KEY,
+                    language: 'en-US',
+                    page: 1,
+                },
+            })
+            .then((response) => {
+                const movies = response.data.results;
+                dispatch(fetchMoviesSuccess(movies));
+            })
+            .catch((error) => {
+                const errorMsg = error.message;
+                dispatch(fetchMoviesFailure(errorMsg));
+            });
+    };
+};
+
+export const setFilter = (filter) => {
+    return {
+        type: SET_FILTER,
+        payload: filter,
+    };
+};

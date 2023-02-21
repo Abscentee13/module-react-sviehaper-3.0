@@ -17,14 +17,6 @@ export const lightTheme = createTheme({
         secondary: {
             main: '#f50057',
         },
-        tomato: '#FF6347',
-        pink: {
-            deep: '#FF1493',
-            hot: '#FF69B4',
-            medium: '#C71585',
-            pale: '#DB7093',
-            light: '#FFB6C1',
-        },
     },
 
 

@@ -8,6 +8,7 @@ import {CssBaseline} from '@material-ui/core';
 import {Header, ThemeSelection} from "./components";
 import {ThemeContext} from './themes/theme-context';
 import {lightTheme, darkTheme} from './themes/theme';
+import {MoviesList} from "./components/MoviesList/MoviesList";
 
 
 
@@ -32,6 +33,8 @@ const App = () => {
             <CssBaseline />
             <ThemeSelection />
             <Header />
+
+            <MoviesList />
         </ThemeProvider>
         </ThemeContext.Provider>
         </Provider>

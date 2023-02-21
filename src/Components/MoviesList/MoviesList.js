@@ -1,18 +1,33 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import API_KEY from './config';
-import Grid from '@material-ui/core/Grid';
-import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import CardMedia from '@material-ui/core/CardMedia';
-import Typography from '@material-ui/core/Typography';
+import css from './MoviesList.module.css';
+import {Button} from "../Button/Button";
+import {Icon} from "../Icon/Icon";
+import {Badge} from "../Badge/Badge";
+import {useDispatch, useSelector} from 'react-redux';
+import { getMovies  } from '../../store/reducers/movies/moviesSelectors';
+import {useEffect} from "react";
+import {fetchMovies} from "../../store/reducers/movies/moviesActions";
+import {MoviesListCard} from "../MoviesListCard/MoviesListCard";
 
-const MovieList = () => {
-    const [movies, setMovies] = useState([]);
+
+
+const MoviesList = () => {
+    const dispatch = useDispatch();
+    const movies = useSelector(getMovies );
+    useEffect(() => {
+        dispatch(fetchMovies());
+    }, [dispatch]);
+
 
     return (
-        <div>
+            <div className={css.moviesListBlock}>
 
-        </div>
+                {movies.map(movie => (
+
+                    <MoviesListCard key={movie.id} movie = {movie}/>
+
+                ))}
+            </div>
     );
 }
+
+export {MoviesList};
