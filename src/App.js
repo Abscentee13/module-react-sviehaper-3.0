@@ -1,9 +1,10 @@
 import React, {useState} from 'react';
+import { Provider } from 'react-redux';
+import { store } from './store/store';
 
 import { ThemeProvider } from "@material-ui/core/styles";
 import {CssBaseline} from '@material-ui/core';
 
-import { getGenres } from './services';
 import {Header, ThemeSelection} from "./components";
 import {ThemeContext} from './themes/theme-context';
 import {lightTheme, darkTheme} from './themes/theme';
@@ -13,7 +14,6 @@ import {lightTheme, darkTheme} from './themes/theme';
 const App = () => {
 
 
-    const genreList = getGenres();
     //////////////////////////////////////
     const [theme, setTheme] = useState(lightTheme ? lightTheme : darkTheme);
 
@@ -26,13 +26,15 @@ const App = () => {
 
 
     return (
+        <Provider store={store}>
         <ThemeContext.Provider value={{ theme, setTheme: toggleTheme }}>
         <ThemeProvider theme={theme}>
             <CssBaseline />
             <ThemeSelection />
-            <Header genreList = {genreList} />
+            <Header />
         </ThemeProvider>
         </ThemeContext.Provider>
+        </Provider>
     );
 }
 
