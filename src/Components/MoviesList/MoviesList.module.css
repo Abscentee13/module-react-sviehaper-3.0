@@ -1,6 +1,5 @@
 .moviesListBlock{
-    width: 80%;
-    margin-top: 20px;
+    margin-top: 10px;
 
     display: flex;
     flex-wrap: wrap;
@@ -8,4 +7,13 @@
     justify-content: center;
     align-items: center;
     align-content: center;
+}
+
+.moviesListPage{
+    width: 80%;
+    margin-top: 20px;
+
+    display: flex;
+    justify-content: center;
+
 }

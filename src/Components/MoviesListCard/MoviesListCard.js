@@ -19,7 +19,9 @@ const useStyles = makeStyles({
         margin: 10
     },
     media: {
+        width: "auto",
         height: 140,
+
     },
 });
 
@@ -28,15 +30,12 @@ const MoviesListCard = ({ movie }) => {
 
     const classes = useStyles();
 
-
-
-
     return (
         <Card className={classes.root} >
             <CardActionArea>
                 <CardMedia
                     className={classes.media}
-                    image={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                    image={'https://image.tmdb.org/t/p/w500' + movie.poster_path}
                     title={movie.title}
                 />
                 <CardContent>

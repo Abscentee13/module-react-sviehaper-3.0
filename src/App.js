@@ -1,15 +1,20 @@
 import React, {useState} from 'react';
+
+import {Navigate, Route, Routes} from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { store } from './store/store';
 
 import { ThemeProvider } from "@material-ui/core/styles";
-import {CssBaseline} from '@material-ui/core';
+import { CssBaseline } from '@material-ui/core';
 
-import {Header, ThemeSelection} from "./components";
-import {ThemeContext} from './themes/theme-context';
-import {lightTheme, darkTheme} from './themes/theme';
-import {MoviesList} from "./components/MoviesList/MoviesList";
 
+import { MainLayout } from "./layouts";
+import { ThemeSelection } from "./components";
+import { ThemeContext } from './themes/theme-context';
+import { lightTheme, darkTheme } from './themes/theme';
+//import { MoviesList } from "./components/MoviesList/MoviesList";
+import { MoviesPage } from './pages/MoviesPage';
+//import {Switch} from "@mui/material";
 
 
 const App = () => {
@@ -24,17 +29,26 @@ const App = () => {
 ////////////////////////////////////////////
 
 
-
-
     return (
         <Provider store={store}>
         <ThemeContext.Provider value={{ theme, setTheme: toggleTheme }}>
         <ThemeProvider theme={theme}>
             <CssBaseline />
             <ThemeSelection />
-            <Header />
+            <Routes>
+                <Route index element={ <Navigate to={'home'} /> } />
+                <Route path={'home'} element={<MainLayout/>}/>
+                {/*    /!*<Route index element={<Navigate to={'cars'}/>}/>*!/*/}
 
-            <MoviesList />
+                {/*    /!*<Route element={<AuthRequireLayout/>}>*!/*/}
+                {/*    /!*    <Route path={'cars'} element={<CarsPage/>}/>*!/*/}
+                {/*    /!*</Route>*!/*/}
+
+                {/*    <Route path={'movies'} element={<MoviesPage />}/>*/}
+                {/*</Route>*/}
+                    {/*<Route path={'register'} element={<RegisterPage/>}/>*/}
+
+            </Routes>
         </ThemeProvider>
         </ThemeContext.Provider>
         </Provider>

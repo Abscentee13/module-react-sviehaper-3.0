@@ -23,7 +23,7 @@ const urls = {
 }
 
 
-console.log(baseURL + urls.movies + API_KEY);
+// console.log(baseURL + urls.movies + API_KEY);
 export {
     baseURL,
     urls,
