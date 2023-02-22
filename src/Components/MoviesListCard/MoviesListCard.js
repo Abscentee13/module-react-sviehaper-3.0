@@ -28,6 +28,8 @@ const useStyles = makeStyles({
 
 const MoviesListCard = ({ movie }) => {
 
+    console.log('movie.overv');
+console.log(movie);
     const classes = useStyles();
 
     return (
@@ -35,7 +37,7 @@ const MoviesListCard = ({ movie }) => {
             <CardActionArea>
                 <CardMedia
                     className={classes.media}
-                    image={'https://image.tmdb.org/t/p/w500' + movie.poster_path}
+                    image={'https://image.tmdb.org/t/p/w500' + movie['poster_path']}
                     title={movie.title}
                 />
                 <CardContent>

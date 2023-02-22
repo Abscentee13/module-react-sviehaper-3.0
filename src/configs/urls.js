@@ -10,6 +10,8 @@ export const requests = {
 //https://api.themoviedb.org/3/discover/movie?api_key=c4afbfa3afc24cd4799e5c009de0e848&language=en-US&page=5
 
 
+////https://api.themoviedb.org/3/discover/movie?api_key=c4afbfa3afc24cd4799e5c009de0e848
+
 const baseURL = 'https://api.themoviedb.org'
 
 const urls = {

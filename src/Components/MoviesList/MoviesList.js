@@ -8,7 +8,7 @@ import { MoviesListCard } from "../MoviesListCard/MoviesListCard";
 
 
 
-const MoviesList = () => {
+const MoviesList = (movies) => {
                 // const dispatch = useDispatch();
                 // const movies = useSelector(getMovies );
                 // useEffect(() => {
@@ -19,9 +19,10 @@ const MoviesList = () => {
     return (
             <div className={css.moviesListPage}>
                 <div className={css.moviesListBlock}>
-
+                    console.log('movies v liastcard')
+                    {console.log(movies)}
                     {movies.map (movie => (
-                        <MoviesListCard key={movie.id} movie = {movie}/>
+                        <MoviesListCard key={movies.id} movie = {movie}/>
                     ))}
                 </div>
             </div>

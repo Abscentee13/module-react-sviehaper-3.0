@@ -8,7 +8,8 @@ import axios from 'axios';
 import {baseURL, urls} from "../../../configs/urls";
 import {API_KEY} from "../../../configs/urls";
 
-import { FETCH_MOVIES_REQUEST, FETCH_MOVIES_SUCCESS, FETCH_MOVIES_FAILURE, SET_FILTER } from './moviesTypes';
+import { FETCH_MOVIES_REQUEST, FETCH_MOVIES_SUCCESS, FETCH_MOVIES_FAILURE, SET_FILTER, SET_TOTAL_MOVIES } from './moviesTypes';
+import {useEffect, useState} from "react";
 
 //////////////
 
@@ -40,26 +41,32 @@ export const fetchMoviesFailure = (error) => {
     };
 };
 
-export const fetchMovies = (filter) => {
+export const fetchMovies = (page) => {
+
     return (dispatch) => {
         dispatch(fetchMoviesRequest());
 
         axios
-            .get(/*baseURL + urls[filter]*/ 'https://api.themoviedb.org/3/discover/movie?api_key=c4afbfa3afc24cd4799e5c009de0e848', {
+            .get(baseURL + urls.movies /*'https://api.themoviedb.org/3/discover/movie?api_key=c4afbfa3afc24cd4799e5c009de0e848'*/, {
                 params: {
                     api_key: API_KEY,
                     language: 'en-US',
-                    page: 1,
+                    page: page,
                 },
             })
             .then((response) => {
                 const movies = response.data.results;
+                console.log(response.data.total_results);
+                dispatch(setTotalMovies(response.data.total_results));
                 dispatch(fetchMoviesSuccess(movies));
+
             })
             .catch((error) => {
                 const errorMsg = error.message;
                 dispatch(fetchMoviesFailure(errorMsg));
             });
+
+
     };
 };
 
@@ -69,3 +76,14 @@ export const setFilter = (filter) => {
         payload: filter,
     };
 };
+
+
+export const setTotalMovies = (total) => {
+    return {
+        type: SET_TOTAL_MOVIES,
+        payload: total,
+    }
+}
+
+
+

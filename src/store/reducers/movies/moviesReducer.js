@@ -1,10 +1,11 @@
-import { FETCH_MOVIES_REQUEST, FETCH_MOVIES_SUCCESS, FETCH_MOVIES_FAILURE, SET_FILTER } from './moviesTypes';
+import { FETCH_MOVIES_REQUEST, FETCH_MOVIES_SUCCESS, FETCH_MOVIES_FAILURE, SET_FILTER, SET_TOTAL_MOVIES } from './moviesTypes';
 
 const initialState = {
     loading: false,
     movies: [],
     error: '',
     filter: {},
+    totalMovies: 0,
 };
 
 const movieReducer = (state = initialState, action) => {
@@ -34,6 +35,11 @@ const movieReducer = (state = initialState, action) => {
                 filter: action.payload,
             };
 
+        case SET_TOTAL_MOVIES:
+            return {
+                ...state,
+                totalMovies: action.payload,
+            };
 
         default:
             return state;
