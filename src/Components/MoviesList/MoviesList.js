@@ -9,11 +9,11 @@ import { MoviesListCard } from "../MoviesListCard/MoviesListCard";
 
 
 const MoviesList = () => {
-                const dispatch = useDispatch();
-                const movies = useSelector(getMovies );
-                useEffect(() => {
-                    dispatch(fetchMovies());
-                }, [dispatch]);
+                // const dispatch = useDispatch();
+                // const movies = useSelector(getMovies );
+                // useEffect(() => {
+                //     dispatch(fetchMovies());
+                // }, [dispatch]);
 
 
     return (

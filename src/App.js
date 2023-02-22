@@ -13,7 +13,7 @@ import { ThemeSelection } from "./components";
 import { ThemeContext } from './themes/theme-context';
 import { lightTheme, darkTheme } from './themes/theme';
 //import { MoviesList } from "./components/MoviesList/MoviesList";
-import { MoviesPage } from './pages/MoviesPage';
+//import { MoviesPage } from './pages/MoviesPage';
 //import {Switch} from "@mui/material";
 
 
