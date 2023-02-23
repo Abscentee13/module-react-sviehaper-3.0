@@ -1,12 +1,12 @@
-import css from './GenreList.module.css';
-import {Button} from "../Button/Button";
-import {Icon} from "../Icon/Icon";
-import {Badge} from "../Badge/Badge";
 import {useDispatch, useSelector} from 'react-redux';
-import { getGenres  } from '../../store/reducers/genres/genresSelectors';
-import {useEffect} from "react";
-import {fetchGenres} from "../../store/reducers/genres/genresActions";
 
+import css from './GenreList.module.css';
+
+import { getGenres  } from '../../store/reducers/genres/genresSelectors';
+import { useEffect } from 'react';
+import { fetchGenres} from '../../store/reducers/genres/genresActions';
+
+import { Button, Badge, Icon } from '../../components';
 
 
 const GenreList = () => {

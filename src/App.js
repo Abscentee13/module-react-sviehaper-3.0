@@ -9,7 +9,7 @@ import { CssBaseline } from '@material-ui/core';
 
 
 import { MainLayout } from "./layouts";
-import { ThemeSelection } from "./components";
+import {Header, ThemeSelection} from "./components";
 import { ThemeContext } from './themes/theme-context';
 import { lightTheme, darkTheme } from './themes/theme';
 //import { MoviesList } from "./components/MoviesList/MoviesList";
@@ -35,9 +35,11 @@ const App = () => {
         <ThemeProvider theme={theme}>
             <CssBaseline />
             <ThemeSelection />
+            <Header />
             <Routes>
                 <Route index element={ <Navigate to={'home'} /> } />
                 <Route path={'home'} element={<MainLayout/>}/>
+                {/*<Route path="/genre/:id" component={GenrePage} />*/}
                 {/*    /!*<Route index element={<Navigate to={'cars'}/>}/>*!/*/}
 
                 {/*    /!*<Route element={<AuthRequireLayout/>}>*!/*/}

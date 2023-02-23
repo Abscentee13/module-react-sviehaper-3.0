@@ -20,6 +20,7 @@ const movieReducer = (state = initialState, action) => {
                 loading: false,
                 movies: action.movies,
                 totalMovies: action.totalMovies,
+                totalPages: action.totalPages,
                 error: '',
             };
         case FETCH_MOVIES_FAILURE:
@@ -36,11 +37,7 @@ const movieReducer = (state = initialState, action) => {
                 filter: action.payload,
             };
 
-        // case SET_TOTAL_MOVIES:
-        //     return {
-        //         ...state,
-        //         totalMovies: action.payload,
-        //     };
+
 
         default:
             return state;

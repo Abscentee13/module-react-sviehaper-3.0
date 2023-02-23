@@ -7,20 +7,22 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
-
+import css from './MoviesListCard.module.css';
 
 
 
 const useStyles = makeStyles({
     root: {
         maxWidth: 345,
+        minWidth: '15%',
         width: '20%',
+
         height: '30vw',
         margin: 10
     },
     media: {
-        width: "auto",
-        height: 140,
+        maxWidth: '96%',
+        height: '20vw',
 
     },
 });
@@ -34,7 +36,7 @@ const MoviesListCard = ({ movie }) => {
         <Card className={classes.root} >
             <CardActionArea>
                 <CardMedia
-                    className={classes.media}
+                    className={classes.media + ' ' + css.zoom}
                     image={'https://image.tmdb.org/t/p/w500' + movie['poster_path']}
                     title={movie.title}
                 />

@@ -12,26 +12,20 @@ const useStyles = makeStyles((theme) => ({
 
 
 
-
-
 const MoviesPagination = ({ moviesPerPage, totalMovies, paginate, currentPage }) => {
 
-    //const [currentPage, setCurrentPage] = useState(1);
-    //const [moviesPerPage, setMoviesPerPage] = useState(10);
-   // const [totalMovies, setTotalMovies] = useState(movies.length);
     const classes = useStyles();
-    const [page, setPage] = useState(currentPage);
+    //const [page, setPage] = useState(currentPage);
 
     const handleChange = (event, value) => {
-        setPage(value);
+        //setPage(value);
         paginate(value);
     };
 
-
-
     return (
         <div className={classes.root}>
-            <Pagination count={Math.ceil(totalMovies / moviesPerPage)} page={page} onChange={handleChange} />
+            {/*less than 500 pages*/}
+            <Pagination count={Math.min(Math.ceil(totalMovies / moviesPerPage), 500)}  onChange={handleChange} />
         </div>
     );
 };

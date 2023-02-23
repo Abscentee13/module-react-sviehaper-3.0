@@ -2,14 +2,9 @@ import axios from 'axios';
 
 // https://api.themoviedb.org/3/movie/157336?api_key={api_key}
 //     https://api.themoviedb.org/3/movie/157336/videos?api_key={api_key}
-
-
-
-import {baseURL, urls} from "../../../configs/urls";
 import {API_KEY} from "../../../configs/urls";
-
-import { FETCH_MOVIES_REQUEST, FETCH_MOVIES_SUCCESS, FETCH_MOVIES_FAILURE, SET_FILTER, SET_TOTAL_MOVIES } from './moviesTypes';
-import {useEffect, useState} from "react";
+import {baseURL, urls} from "../../../configs/urls";
+import { FETCH_MOVIES_REQUEST, FETCH_MOVIES_SUCCESS, FETCH_MOVIES_FAILURE, SET_FILTER } from './moviesTypes';
 
 //////////////
 
@@ -27,12 +22,12 @@ export const fetchMoviesRequest = () => {
     };
 };
 
-export const fetchMoviesSuccess = (movies, totalMovies) => {
+export const fetchMoviesSuccess = (movies, totalMovies, totalPages) => {
     return {
         type: FETCH_MOVIES_SUCCESS,
-       // payload: movies,
-        movies,
-        totalMovies,
+           movies,
+           totalMovies,
+           totalPages,
     };
 };
 
@@ -43,9 +38,7 @@ export const fetchMoviesFailure = (error) => {
     };
 };
 
-export const fetchMovies = (page, totalMovies) => {
-
-    let sss= 0;
+export const fetchMovies = (page, totalMovies, totalPages, genreID) => {
 
     return (dispatch) => {
         dispatch(fetchMoviesRequest());
@@ -56,22 +49,15 @@ export const fetchMovies = (page, totalMovies) => {
                     api_key: API_KEY,
                     language: 'en-US',
                     page: page,
+                    with_genres: genreID
                 },
             })
             .then((response) => {
                 const movies = response.data.results;
                 const totalMovies = response.data.total_results;
+                const totalPages = response.data.total_pages;
 
-                //console.log(response.data.total_results);
-
-
-                //dispatch(setTotalPages(totalPages));
-                //dispatch(setTotalMovies(totalMovies));
-                dispatch(fetchMoviesSuccess(movies, totalMovies));
-                //console.log(totalMovies);
-
-                //console.log(movies);
-
+                dispatch(fetchMoviesSuccess(movies, totalMovies, totalPages));
             })
             .catch((error) => {
                 const errorMsg = error.message;
@@ -90,12 +76,6 @@ export const setFilter = (filter) => {
 };
 
 
-// export const setTotalMovies = (totalMovies) => {
-//     return {
-//         type: SET_TOTAL_MOVIES,
-//         payload: totalMovies ,
-//     }
-// }
 
 
 
