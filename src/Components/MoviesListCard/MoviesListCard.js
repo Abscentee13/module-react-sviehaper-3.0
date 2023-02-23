@@ -28,8 +28,6 @@ const useStyles = makeStyles({
 
 const MoviesListCard = ({ movie }) => {
 
-    console.log('movie.overv');
-console.log(movie);
     const classes = useStyles();
 
     return (

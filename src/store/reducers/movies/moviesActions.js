@@ -27,10 +27,12 @@ export const fetchMoviesRequest = () => {
     };
 };
 
-export const fetchMoviesSuccess = (movies) => {
+export const fetchMoviesSuccess = (movies, totalMovies) => {
     return {
         type: FETCH_MOVIES_SUCCESS,
-        payload: movies,
+       // payload: movies,
+        movies,
+        totalMovies,
     };
 };
 
@@ -41,7 +43,9 @@ export const fetchMoviesFailure = (error) => {
     };
 };
 
-export const fetchMovies = (page) => {
+export const fetchMovies = (page, totalMovies) => {
+
+    let sss= 0;
 
     return (dispatch) => {
         dispatch(fetchMoviesRequest());
@@ -56,9 +60,17 @@ export const fetchMovies = (page) => {
             })
             .then((response) => {
                 const movies = response.data.results;
-                console.log(response.data.total_results);
-                dispatch(setTotalMovies(response.data.total_results));
-                dispatch(fetchMoviesSuccess(movies));
+                const totalMovies = response.data.total_results;
+
+                //console.log(response.data.total_results);
+
+
+                //dispatch(setTotalPages(totalPages));
+                //dispatch(setTotalMovies(totalMovies));
+                dispatch(fetchMoviesSuccess(movies, totalMovies));
+                //console.log(totalMovies);
+
+                //console.log(movies);
 
             })
             .catch((error) => {
@@ -78,12 +90,13 @@ export const setFilter = (filter) => {
 };
 
 
-export const setTotalMovies = (total) => {
-    return {
-        type: SET_TOTAL_MOVIES,
-        payload: total,
-    }
-}
+// export const setTotalMovies = (totalMovies) => {
+//     return {
+//         type: SET_TOTAL_MOVIES,
+//         payload: totalMovies ,
+//     }
+// }
+
 
 
 
