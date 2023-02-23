@@ -17,9 +17,20 @@ import {MoviesListCard} from "../components/MoviesListCard/MoviesListCard";
 
 
 const MoviesPage = () => {
+    const dispatch = useDispatch();
+
     const [currentPage, setCurrentPage] = useState(1);
 
-    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(fetchMovies(currentPage));
+    }, [dispatch, currentPage]);
+
+    // useEffect(() => {
+    //     dispatch(fetchMovies(currentPage));
+    // }, [dispatch]);
+
+
+
     useEffect(() => {
         dispatch(fetchMovies(currentPage));
     }, [dispatch]);
@@ -27,9 +38,7 @@ const MoviesPage = () => {
     const [totalMovies, setTotalMovies] = useState(0);
 
 
-    useEffect(() => {
-        dispatch(fetchMovies(currentPage));
-    }, [dispatch]);
+
 
 
     const movies = useSelector(getMovies );
@@ -74,12 +83,12 @@ const MoviesPage = () => {
         // <Filter />
         <div>
          <MoviesPagination {...paginationProps} />
-            {/*{console.log(currentPage)}*/}
+            {console.log(currentPage)}
             {console.log(movies)}
             <div className={css.moviesListBlock}>
                 {movies.map(movie => ( //console.log(movie)))}
 
-                                     <MoviesListCard  movie = {movie}/>
+                                     <MoviesListCard key = {movie.id} movie = {movie}/>
                 ))}
 
             </div>
