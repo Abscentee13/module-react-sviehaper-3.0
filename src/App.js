@@ -7,14 +7,12 @@ import { store } from './store/store';
 import { ThemeProvider } from "@material-ui/core/styles";
 import { CssBaseline } from '@material-ui/core';
 
+import css from './App.module.css';
 
-import { MainLayout } from "./layouts";
-import {Header, ThemeSelection} from "./components";
+import { MainLayout } from './layouts';
+import {Header, ThemeSelection} from './components';
 import { ThemeContext } from './themes/theme-context';
 import { lightTheme, darkTheme } from './themes/theme';
-//import { MoviesList } from "./components/MoviesList/MoviesList";
-//import { MoviesPage } from './pages/MoviesPage';
-//import {Switch} from "@mui/material";
 
 
 const App = () => {
@@ -34,7 +32,11 @@ const App = () => {
         <ThemeContext.Provider value={{ theme, setTheme: toggleTheme }}>
         <ThemeProvider theme={theme}>
             <CssBaseline />
-            <ThemeSelection />
+            <div className={css.setting}>
+                <div className={css.themeSetting}>
+                        <ThemeSelection />
+                </div>
+            </div>
             <Header />
             <Routes>
                 <Route index element={ <Navigate to={'home'} /> } />

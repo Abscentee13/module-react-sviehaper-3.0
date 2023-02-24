@@ -36,9 +36,6 @@ const Filter = ({ onFilterChange, genre }) => {
     }, [dispatch]);
 
     const classes = useStyles();
-////////////////////////
-    //const { onFilterChange } = props; // Деструктуризуємо функцію зміни фільтра з props
-//console.log(onFilterChange);
 
 
     const [selectedGenres, setSelectedGenres] = useState([]);
@@ -56,10 +53,8 @@ const Filter = ({ onFilterChange, genre }) => {
     ///////////////////////////
     const handleGenreChange = (event) => {
         setSelectedGenres(event.target.value);
-        //onFilterChange(selectedGenres, selectedYear, selectedRating);
+        onFilterChange(selectedGenres, selectedYear, selectedRating);
         onFilterChange(event.target.value);
-
-        console.log(event.target.value);
     };
 
     const handleYearChange = (event) => {
@@ -71,9 +66,6 @@ const Filter = ({ onFilterChange, genre }) => {
         setSelectedRating(event.target.value);
         onFilterChange(selectedGenres, selectedYear, selectedRating);
     };
-
-
-    /////////////////////
 
 
     return (
@@ -96,16 +88,6 @@ const Filter = ({ onFilterChange, genre }) => {
                 </Select>
             </FormControl>
 
-
-
-
-            {/*<span>Filter by genre:</span>*/}
-            {/*<select value={selectedGenre} onChange={onGenreChange}>*/}
-            {/*    <option value="">All</option>*/}
-            {/*    {genreList.map(genre => (*/}
-            {/*        <option key={genre.id} value={genre.id}>{genre.name}</option>*/}
-            {/*    ))}*/}
-            {/*</select>*/}
         </div>
     );
 };

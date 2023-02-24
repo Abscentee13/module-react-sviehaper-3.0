@@ -1,5 +1,6 @@
 .header{
     max-height: 20vw;
+    width: 96%;
     background-color: #281f43;
     color: #C0AAAA;
 
@@ -8,7 +9,6 @@
     display: flex;
     justify-content: space-around;
 
-    overflow: hidden;
 }
 
 .headerLogo{

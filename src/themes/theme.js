@@ -6,9 +6,12 @@ export const lightTheme = createTheme({
 
         background: {
             default: '#c6c0d4',
+
         },
 
+
         primary: {
+            contrast: '#8d8998',
             contrastText: '#7CC6fE',
             dark: "rgb(59, 71, 59)",
             light: "rgb(119, 132, 119)",
@@ -46,9 +49,11 @@ export const darkTheme = createTheme({
 
         background: {
             default: '#1e1633',
+
         },
 
         primary: {
+            contrast: '#37295d',
             contrastText: '#FFB6C1',
             dark: '#FFB6C1',
             light: "rgb(119, 132, 119)",

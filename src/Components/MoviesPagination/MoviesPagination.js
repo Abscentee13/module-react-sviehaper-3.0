@@ -11,14 +11,11 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-
 const MoviesPagination = ({ moviesPerPage, totalMovies, paginate, currentPage }) => {
 
     const classes = useStyles();
-    //const [page, setPage] = useState(currentPage);
 
     const handleChange = (event, value) => {
-        //setPage(value);
         paginate(value);
     };
 

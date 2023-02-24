@@ -4,7 +4,7 @@ const MainLayout = () => {
     const page = 1;
     return (
         <div>
-            <MoviesPage page = {page} />
+            <MoviesPage page = {page} genres = {[]} />
         </div>
     );
 };

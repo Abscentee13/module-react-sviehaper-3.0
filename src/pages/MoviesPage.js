@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import {useContext, useEffect, useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import css from "./MoviesPage.module.css";
@@ -8,11 +8,16 @@ import { fetchMovies } from "../store/reducers/movies/moviesActions";
 import { Filter } from "../components";
 import { MoviesPagination } from "../components";
 import { MoviesListCard } from "../components/MoviesListCard/MoviesListCard";
+import {ThemeContext} from "../themes/theme-context";
 
 
 
 
-const MoviesPage = (page) => {
+const MoviesPage = (page, genres) => {
+
+    const {theme} = useContext(ThemeContext);
+
+
     const dispatch = useDispatch();
     const movies = useSelector(getMovies );
     const totalMovies = useSelector(getTotalMovies );
@@ -32,37 +37,29 @@ const MoviesPage = (page) => {
         paginate: (pageNumber) => {setCurrentPage(pageNumber);},
         currentPage: 1
     };
-//////
-
-
 
     const handleFilterChange = (genres, rating) => {
         setSelectedGenres(genres);
-        console.log('sdfsdfsdf' + genres);
-
-        setCurrentPage(1);
+        //setCurrentPage(1);
     };
-
-    // const filterProps = {
-    //     selectedGenres: '',
-    //     onFilterChange: {handleFilterChange},
-    // };
 
 
     return (
 
-        <div>
-            <div className={css.filterRow}>
+        <div className={css.moviesListPage}>
+            <div className={css.filterRow} >
                 <div>
                     Загальна кількість фільмів у базі {totalMovies}
                 </div>
                 <div>
-                    <Filter onFilterChange={handleFilterChange} selectedGenres={selectedGenres}/>
+                    <Filter onFilterChange={handleFilterChange} selectedGenres={''}/>
                 </div>
 
 
             </div>
-         <MoviesPagination {...paginationProps} />
+            <div className={css.paginationRow}>
+                <MoviesPagination {...paginationProps} />
+            </div>
             <div className={css.moviesListBlock}>
                 {movies.map(movie => (
                                      <MoviesListCard key = {movie.id} movie = {movie}/>
