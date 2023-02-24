@@ -9,11 +9,12 @@ import { Filter } from "../components";
 import { MoviesPagination } from "../components";
 import { MoviesListCard } from "../components/MoviesListCard/MoviesListCard";
 import {ThemeContext} from "../themes/theme-context";
+import {LanguageContext} from "../language/language-context";
 
 
 
 
-const MoviesPage = (page, genres) => {
+const MoviesPage = (page) => {
 
     const {theme} = useContext(ThemeContext);
 
@@ -26,9 +27,11 @@ const MoviesPage = (page, genres) => {
     const [currentPage, setCurrentPage] = useState(1);
     const [selectedGenres, setSelectedGenres] = useState('All Genres');
 
+    const language = useContext(LanguageContext);
+
     useEffect(() => {
-        dispatch(fetchMovies(currentPage, totalMovies, totalPages, selectedGenres));
-    }, [dispatch, currentPage, totalMovies, totalPages, selectedGenres]);
+        dispatch(fetchMovies(currentPage, totalMovies, totalPages, selectedGenres, language.language));
+    }, [dispatch, currentPage, totalMovies, totalPages, selectedGenres, language]);
 
 
     const paginationProps = {

@@ -22,7 +22,7 @@ export const fetchMoviesRequest = () => {
     };
 };
 
-export const fetchMoviesSuccess = (movies, totalMovies, totalPages) => {
+export const fetchMoviesSuccess = (movies, totalMovies, totalPages, genreID, language) => {
     return {
         type: FETCH_MOVIES_SUCCESS,
            movies,
@@ -38,7 +38,10 @@ export const fetchMoviesFailure = (error) => {
     };
 };
 
-export const fetchMovies = (page, totalMovies, totalPages, genreID) => {
+export const fetchMovies = (page, totalMovies, totalPages, genreID, language) => {
+
+
+    console.log('in movfet' + language);
 
     return (dispatch) => {
         dispatch(fetchMoviesRequest());
@@ -47,7 +50,7 @@ export const fetchMovies = (page, totalMovies, totalPages, genreID) => {
             .get(baseURL + urls.movies /*'https://api.themoviedb.org/3/discover/movie?api_key=c4afbfa3afc24cd4799e5c009de0e848'*/, {
                 params: {
                     api_key: API_KEY,
-                    language: 'en-US',
+                    language: language,
                     page: page,
                     with_genres: genreID
                 },

@@ -10,9 +10,11 @@ import { CssBaseline } from '@material-ui/core';
 import css from './App.module.css';
 
 import { MainLayout } from './layouts';
-import {Header, ThemeSelection} from './components';
+import {Header, ThemeSelection, LanguageSwitcher} from './components';
 import { ThemeContext } from './themes/theme-context';
 import { lightTheme, darkTheme } from './themes/theme';
+
+import { LanguageProvider } from './language/language-context';
 
 
 const App = () => {
@@ -25,17 +27,25 @@ const App = () => {
         setTheme(theme === lightTheme ? darkTheme : lightTheme);
     };
 ////////////////////////////////////////////
+    const [language, setLanguage] = useState('en-US');
 
+
+    //////////////////////
 
     return (
         <Provider store={store}>
+            <LanguageProvider>
         <ThemeContext.Provider value={{ theme, setTheme: toggleTheme }}>
         <ThemeProvider theme={theme}>
             <CssBaseline />
             <div className={css.setting}>
-                <div className={css.themeSetting}>
+                <div className={css.settingItem}>
                         <ThemeSelection />
                 </div>
+                <div className={css.settingItem}>
+                    <LanguageSwitcher />
+                </div>
+
             </div>
             <Header />
             <Routes>
@@ -55,6 +65,7 @@ const App = () => {
             </Routes>
         </ThemeProvider>
         </ThemeContext.Provider>
+                </LanguageProvider>
         </Provider>
     );
 }

@@ -1,14 +1,20 @@
-import {Typography} from "@mui/material";
+import {Typography} from '@mui/material';
 
 import css from './Header.module.css';
 
 import {GenreList} from '../../components';
-import {UserInfo} from "../../components";
-import {useContext} from "react";
-import {ThemeContext} from "../../themes/theme-context";
+import {UserInfo} from '../../components';
+import {useContext} from 'react';
+import {ThemeContext} from '../../themes/theme-context';
+import {LanguageContext} from '../../language/language-context';
+
+
 
 const Header = () =>{
     const {theme} = useContext(ThemeContext);
+
+    const language = useContext(LanguageContext);
+
 
 return(
         <div className={css.header}>

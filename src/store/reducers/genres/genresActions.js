@@ -5,13 +5,19 @@ import {API_KEY} from "../../../configs/urls";
 
 import { FETCH_GENRES_REQUEST, FETCH_GENRES_SUCCESS, FETCH_GENRES_FAILURE } from './genresTypes';
 
-const fetchGenres = () => {
+
+
+const fetchGenres = (language) => {
+
+
     return (dispatch) => {
+
         dispatch(fetchGenresRequest());
+
         axios.get(baseURL + urls.genres, {
             params: {
                 api_key: API_KEY,
-                language: 'en-US',
+                language: language,
             },
         })
             .then((response) => {

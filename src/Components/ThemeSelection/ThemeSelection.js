@@ -6,6 +6,10 @@ const ThemeSelection = () => {
     const { setTheme } = useContext(ThemeContext);
     const [checked, setChecked] = useState(false);
 
+    const handleChange = () => {
+        setChecked(!checked);
+        setTheme();
+    };
 
     const MaterialUISwitch = styled(Switch)(({ theme }) => ({
         width: 62,
@@ -54,10 +58,6 @@ const ThemeSelection = () => {
         },
     }));
 
-    const handleChange = () => {
-        setChecked(!checked);
-        setTheme();
-    };
 
     return (
             <FormGroup>

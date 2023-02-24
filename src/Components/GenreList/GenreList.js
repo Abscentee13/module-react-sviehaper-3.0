@@ -3,24 +3,29 @@ import {useDispatch, useSelector} from 'react-redux';
 import css from './GenreList.module.css';
 
 import { getGenres  } from '../../store/reducers/genres/genresSelectors';
-import { useEffect } from 'react';
+import {useContext, useEffect} from 'react';
 import { fetchGenres} from '../../store/reducers/genres/genresActions';
 
 import { Button, Badge, Icon } from '../../components';
+import {LanguageContext} from "../../language/language-context";
 
 
 const GenreList = () => {
+
+    const language = useContext(LanguageContext);
     const dispatch = useDispatch();
     const genres = useSelector(getGenres );
+
     useEffect(() => {
-        dispatch(fetchGenres());
-    }, [dispatch]);
+
+        dispatch(fetchGenres(language.language));
+    }, [dispatch, language]);
+
+
 
 
     return (
         <div>
-            <h2>Genres</h2>
-
             <div className={css.genreListBlock}>
 
                 {genres.map(genre => (
