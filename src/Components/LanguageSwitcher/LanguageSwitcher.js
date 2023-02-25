@@ -1,20 +1,18 @@
 import React, {useContext, useState} from 'react';
 
-import { Switch, FormControlLabel } from "@material-ui/core";
+import { Switch, FormControlLabel } from '@material-ui/core';
+import {FormGroup, styled} from '@mui/material';
 
 import { LanguageContext } from '../../language/language-context';
-import {FormGroup, styled} from "@mui/material";
+
 
 const LanguageSwitcher = () => {
-    const {language, toggleLanguage} = useContext(LanguageContext);
+    const { toggleLanguage} = useContext(LanguageContext);
     const [checked, setChecked] = useState(false);
-
-    console.log(language);
 
     const handleChange = () => {
         setChecked(!checked);
         toggleLanguage();
-        console.log(language);
     };
 
 ///картинки прапорів ще треба допрацювати

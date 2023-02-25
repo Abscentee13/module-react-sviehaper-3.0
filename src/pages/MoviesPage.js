@@ -1,23 +1,20 @@
-import {useContext, useEffect, useState} from "react";
-import { useDispatch, useSelector } from "react-redux";
+import {useContext, useEffect, useState} from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
-import css from "./MoviesPage.module.css";
+import css from './MoviesPage.module.css';
 
 import { getMovies, getTotalMovies, getTotalPages } from "../store/reducers/movies/moviesSelectors";
-import { fetchMovies } from "../store/reducers/movies/moviesActions";
-import { Filter } from "../components";
-import { MoviesPagination } from "../components";
-import { MoviesListCard } from "../components/MoviesListCard/MoviesListCard";
-import {ThemeContext} from "../themes/theme-context";
-import {LanguageContext} from "../language/language-context";
+import { fetchMovies } from '../store/reducers/movies/moviesActions';
+import {LanguageContext} from '../language/language-context';
+import {
+    Filter,
+    MoviesListCard,
+    MoviesPagination,
+    } from '../components';
 
 
 
-
-const MoviesPage = (page) => {
-
-    const {theme} = useContext(ThemeContext);
-
+const MoviesPage = () => {
 
     const dispatch = useDispatch();
     const movies = useSelector(getMovies );
@@ -43,7 +40,7 @@ const MoviesPage = (page) => {
 
     const handleFilterChange = (genres, rating) => {
         setSelectedGenres(genres);
-        //setCurrentPage(1);
+        //setCurrentPage(1); //тут не знаю, як при зміні фільтру покласти пагинатор на першу сторінку.
     };
 
 
@@ -51,27 +48,29 @@ const MoviesPage = (page) => {
 
         <div className={css.moviesListPage}>
             <div className={css.filterRow} >
+
                 <div>
-                    Загальна кількість фільмів у базі {totalMovies}
+                    {(language.language === 'uk-UA'? 'Загальна кількість фільмів у базі ': 'Total count movie in base ')}
+                    {totalMovies}
                 </div>
                 <div>
                     <Filter onFilterChange={handleFilterChange} selectedGenres={''}/>
                 </div>
 
-
             </div>
+
             <div className={css.paginationRow}>
                 <MoviesPagination {...paginationProps} />
             </div>
+
             <div className={css.moviesListBlock}>
                 {movies.map(movie => (
                                      <MoviesListCard key = {movie.id} movie = {movie}/>
                 ))}
-
             </div>
+
         </div>
     );
-
 }
 
 export {MoviesPage};

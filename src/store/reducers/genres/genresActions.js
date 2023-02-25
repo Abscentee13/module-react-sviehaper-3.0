@@ -25,9 +25,7 @@ const fetchGenres = (language) => {
 
                 dispatch(fetchGenresSuccess(genres));
             })
-            .
-
-            catch((error) => {
+            .catch((error) => {
                 dispatch(fetchGenresFailure(error.message));
             });
     };

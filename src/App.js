@@ -20,17 +20,13 @@ import { LanguageProvider } from './language/language-context';
 const App = () => {
 
 
-    //////////////////////////////////////
-    const [theme, setTheme] = useState(lightTheme ? lightTheme : darkTheme);
+    //////////////////////////////////////////// тут здається можна краще написати
+        const [theme, setTheme] = useState(darkTheme);
 
-    const toggleTheme = () => {
-        setTheme(theme === lightTheme ? darkTheme : lightTheme);
-    };
-////////////////////////////////////////////
-    const [language, setLanguage] = useState('en-US');
-
-
-    //////////////////////
+        const toggleTheme = () => {
+            setTheme(theme === lightTheme ? darkTheme : lightTheme);
+        };
+    ////////////////////////////////////////////
 
     return (
         <Provider store={store}>

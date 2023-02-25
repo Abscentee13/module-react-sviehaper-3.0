@@ -14,7 +14,6 @@ const UserInfo = ({name, email, avatarUrl}) => {
                 <div className={css.userCard}>
                     <AvatarImage avatarUrl = {avatarUrl} />
                     <div className={css.userCardText}>
-                        {/*variant="h6"*/}
                         <Typography  component={theme.components.MuiTypography.defaultProps.variantMapping.subtitle1} color={theme.palette.primary.contrastText}>
                             {name}
                             <br/>

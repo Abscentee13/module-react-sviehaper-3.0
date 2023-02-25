@@ -40,14 +40,11 @@ export const fetchMoviesFailure = (error) => {
 
 export const fetchMovies = (page, totalMovies, totalPages, genreID, language) => {
 
-
-    console.log('in movfet' + language);
-
     return (dispatch) => {
         dispatch(fetchMoviesRequest());
 
         axios
-            .get(baseURL + urls.movies /*'https://api.themoviedb.org/3/discover/movie?api_key=c4afbfa3afc24cd4799e5c009de0e848'*/, {
+            .get(baseURL + urls.movies, {
                 params: {
                     api_key: API_KEY,
                     language: language,

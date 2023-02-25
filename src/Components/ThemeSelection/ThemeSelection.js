@@ -1,6 +1,9 @@
 import React, {useContext, useState} from 'react';
+
+import {FormControlLabel, FormGroup, styled, Switch} from '@mui/material';
+
 import { ThemeContext } from '../../themes/theme-context';
-import {FormControlLabel, FormGroup, styled, Switch} from "@mui/material";
+
 
 const ThemeSelection = () => {
     const { setTheme } = useContext(ThemeContext);
@@ -63,7 +66,7 @@ const ThemeSelection = () => {
             <FormGroup>
                 <FormControlLabel
                     control={<MaterialUISwitch sx={{ m: 1 }}   />}
-                    checked={checked}
+                    checked={!checked}
                     onChange={handleChange}
                 />
             </FormGroup>
