@@ -6,8 +6,8 @@ import { getGenres  } from '../../store/reducers/genres/genresSelectors';
 import {useContext, useEffect} from 'react';
 import { fetchGenres} from '../../store/reducers/genres/genresActions';
 
-import { Button, Badge, Icon } from '../../components';
-import {LanguageContext} from "../../language/language-context";
+import { Button, Icon } from '../../components';
+import { LanguageContext } from "../../language/language-context";
 
 
 const GenreList = () => {
@@ -23,16 +23,14 @@ const GenreList = () => {
 
 
 
-
     return (
         <div>
             <div className={css.genreListBlock}>
-
                 {genres.map(genre => (
                     <Button key={genre.id} style={{ marginRight: '20px' }}>
                         <Icon name="inbox" />
                         {genre.name}
-                        <Badge circle alert value={genre.id} />
+                        {/*<Badge circle alert value={genre.id} />*/}
                     </Button>
                 ))}
             </div>

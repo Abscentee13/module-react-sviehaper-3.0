@@ -12,7 +12,7 @@ export const lightTheme = createTheme({
 
         primary: {
             contrast: '#8d8998',
-            contrastText: '#7CC6fE',
+            contrastText: '#f50057',
             dark: "rgb(59, 71, 59)",
             light: "rgb(119, 132, 119)",
             main: "#556655"

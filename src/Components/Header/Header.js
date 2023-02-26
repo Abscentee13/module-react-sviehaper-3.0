@@ -6,15 +6,11 @@ import {GenreList} from '../../components';
 import {UserInfo} from '../../components';
 import {useContext} from 'react';
 import {ThemeContext} from '../../themes/theme-context';
-//import {LanguageContext} from '../../language/language-context';
 
 
 
 const Header = () =>{
     const {theme} = useContext(ThemeContext);
-
-    //const language = useContext(LanguageContext);
-
 
 return(
         <div className={css.header}>
