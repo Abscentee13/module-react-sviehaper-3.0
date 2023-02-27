@@ -15,6 +15,7 @@ const GenreBadge = (genreIds ) => {
     const dispatch = useDispatch();
     const genres = useSelector(getGenres );
 
+    //не добре тут запит класти, знаю
     useEffect(() => {
 
         dispatch(fetchGenres(language.language));
